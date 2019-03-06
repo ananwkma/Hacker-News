@@ -23,6 +23,48 @@
   color: #61dafb;
 }
 
+.container {
+  margin-top: 10px;
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+.logo {
+  height: 22px;
+  width: 22px;
+  margin-left: 3px;
+}
+
+.listContainer {
+  background-color: #f2f4ed;
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
+
+.list {
+  margin-bottom: 5px;
+}
+
+.orangeBar {
+  background-color: #FF6600;
+  height: 25px;
+  align-items: center;
+  flex-direction: row;
+  display: flex;
+}
+
+.orangeBar > h1{
+  font-size: 15px;
+  font-weight: 900;
+  margin-left: 5px;
+}
+
+.orangeBar > h2{
+  font-size: 15px;
+  font-weight: 400;
+  margin-left: 10px;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

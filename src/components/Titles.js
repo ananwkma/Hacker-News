@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Flexbox from 'flexbox-react'
+import '../App.css'
 
 class Titles extends Component {
 
@@ -24,21 +26,36 @@ class Titles extends Component {
 
 	renderTitles = () => {
 		const { titles } = this.state
-		return ( <ul>
+		return ( <ol>
 				{Object.values(titles).map(obj => (
-						<li key={obj.id}>{obj.title}</li>
+						<li class="list" key={obj.id}>{obj.title}</li>
 				))}
-			</ul>
+			</ol>
 		)
 	}
 
   render() {
     return (
-    	<div> 
-    		{this.renderTitles()}
-    	</div>
+    	<Flexbox class="container"> 
+    		<Flexbox class="orangeBar">
+    			<img class="logo" src="../../images/logo.png"/>
+    			<h1> HackerNews </h1> 
+    			<h2> new </h2>
+					<h2> past </h2>
+					<h2> comments </h2>
+					<h2> ask </h2>
+					<h2> show </h2>
+					<h2> jobs </h2>
+					<h2> submit </h2>
+    		</Flexbox>
+    		<Flexbox class="listContainer">
+    			{this.renderTitles()}
+    		</Flexbox>
+    	</Flexbox>
     );
   }
 }
+
+
 
 export default Titles;
