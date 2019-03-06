@@ -14,7 +14,9 @@ class Titles extends Component {
 						let URL = ("https://hacker-news.firebaseio.com/v0/item/" + id + ".json")
 						fetch(URL)
 							.then((result) => result.json(result))
-							.then((result) => this.setState({titles: [...this.state.titles, result.title]}))
+							.then((result) => { 
+								this.setState({ titles: [...this.state.titles, { id: result.id, title: result.title } ] })
+							})
 					})
 				)
 		)
@@ -23,8 +25,8 @@ class Titles extends Component {
 	renderTitles = () => {
 		const { titles } = this.state
 		return ( <ul>
-				{titles.map(title => (
-						<li>{title}</li>
+				{Object.values(titles).map(obj => (
+						<li key={obj.id}>{obj.title}</li>
 				))}
 			</ul>
 		)
