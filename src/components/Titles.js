@@ -6,30 +6,34 @@ class Titles extends Component {
 		titles: [],
 	}
 
-	renderTitles = () => {
-		this.state.titles.map((title) => (
-			<li>title</li>
-		))
+	componentDidMount = () => {
+		fetch("https://hacker-news.firebaseio.com/v0/topstories.json") 
+			.then((result) => result.json(result))
+			.then((idArray) => (
+					idArray.map(id => {
+						let URL = ("https://hacker-news.firebaseio.com/v0/item/" + id + ".json")
+						fetch(URL)
+							.then((result) => result.json(result))
+							.then((result) => this.setState({titles: [...this.state.titles, result.title]}))
+					})
+				)
+		)
 	}
 
-	getTitles = () => {
-		fetch(("https://hacker-news.firebaseio.com/v0/topstories.json") 
-			.then((result) => result.json(result))
-			.then((idArray) => 
-				console.log(idArray)
-				fetch(("https://hacker-news.firebaseio.com/v0/item/121003.json"))
-					.then((result) => result.json())
-					.then((result) => this.setState(...this.state.titles, result.title))
-			)
+	renderTitles = () => {
+		const { titles } = this.state
+		return ( <ul>
+				{titles.map(title => (
+						<li>{title}</li>
+				))}
+			</ul>
 		)
-		this.renderTitles();
-
 	}
 
   render() {
     return (
     	<div> 
-    		{this.getTitles}
+    		{this.renderTitles()}
     	</div>
     );
   }
