@@ -12,14 +12,13 @@ class Titles extends Component {
 		fetch("https://hacker-news.firebaseio.com/v0/topstories.json") 
 			.then((result) => result.json(result))
 			.then((idArray) => (
-					idArray.map(id => {
-						let URL = ("https://hacker-news.firebaseio.com/v0/item/" + id + ".json")
-						fetch(URL)
+					idArray.map(id => (
+						fetch("https://hacker-news.firebaseio.com/v0/item/" + id + ".json")
 							.then((result) => result.json(result))
 							.then((result) => { 
 								this.setState({ titles: [...this.state.titles, { id: result.id, title: result.title } ] })
 							})
-					})
+					))
 				)
 		)
 	}
@@ -28,7 +27,7 @@ class Titles extends Component {
 		const { titles } = this.state
 		return ( <ol>
 				{Object.values(titles).map(obj => (
-						<li class="list" key={obj.id}>{obj.title}</li>
+						<li className="list" key={obj.id}>{obj.title}</li>
 				))}
 			</ol>
 		)
@@ -36,9 +35,9 @@ class Titles extends Component {
 
   render() {
     return (
-    	<Flexbox class="container"> 
-    		<Flexbox class="orangeBar">
-    			<img class="logo" src="../../images/logo.png"/>
+    	<Flexbox className="container"> 
+    		<Flexbox className="orangeBar">
+    			<img className="logo" src="../../images/logo.png" alt="logo"/>
     			<h1> HackerNews </h1> 
     			<h2> new </h2>
 					<h2> past </h2>
@@ -48,7 +47,7 @@ class Titles extends Component {
 					<h2> jobs </h2>
 					<h2> submit </h2>
     		</Flexbox>
-    		<Flexbox class="listContainer">
+    		<Flexbox className="listContainer">
     			{this.renderTitles()}
     		</Flexbox>
     	</Flexbox>
