@@ -18,13 +18,20 @@ class Home extends Component {
           idArray.map(id => (
             fetch("https://hacker-news.firebaseio.com/v0/item/" + id + ".json")
               .then((result) => result.json(result))
-              .then((result) => { 
+              .then((result) => {
+                let hostname = ''
+                if(result.url) {
+                  hostname = (new URL(result.url)).hostname.split('www.').join('');
+                }
                 this.setState({ titles: [...this.state.titles, { 
                   id: result.id, 
                   title: result.title,
                   url: result.url,
                   score: result.score,
                   user: result.by,
+                  time: result.time,
+                  comments: result.descendants,
+                  trunc: hostname,
                 }]})
               })
           ))
@@ -34,11 +41,15 @@ class Home extends Component {
 
   renderTitles = () => {
     const { titles } = this.state
-    return ( <ol>
+    const now = Date.now()
+
+    return ( <ol className="list">
         {Object.values(titles).slice(0, 30).map(obj => (
-            <li className="list" key={obj.id}>
+            <li className="listItem" key={obj.id}>
             
-              <a href={obj.url} className="newsLink"> {obj.title} </a>
+              <a href={obj.url} className="newsLink"> {obj.title} </a> 
+              <Link to='/' className="hostnameLink"> {obj.trunc ? '('+obj.trunc+')' : null} </Link>
+              <h1 className="details"> {obj.score} points by {obj.user} {obj.time} hours ago | hide | {obj.comments} comments </h1>
 
             </li>
         ))}

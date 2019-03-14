@@ -38,16 +38,34 @@
 }
 
 .listContainer {
+
 }
 
 .list {
-  margin-bottom: 5px;
+
+}
+
+.listItem {
+  margin: 5px 0;
   font-size: 15px;
 }
 
 .newsLink {
   text-decoration: none;
   color: black;
+}
+
+.hostnameLink {
+  text-decoration: none;
+  color: #555555;
+  font-size: 12px;
+}
+
+.details {
+  margin: 2px 0;
+  font-size: 9px;
+  font-weight: 500;
+  color: #555555;
 }
 
 .moreLink {
