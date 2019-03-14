@@ -45,6 +45,11 @@
   font-size: 15px;
 }
 
+.newsLink {
+  text-decoration: none;
+  color: black;
+}
+
 .moreLink {
   text-decoration: none;
 }

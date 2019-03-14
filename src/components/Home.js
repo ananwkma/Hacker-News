@@ -3,7 +3,7 @@ import Flexbox from 'flexbox-react'
 import '../styles/App.css'
 import Footer from './Footer'
 import Header from './Header'
-import { BrowserRouter as Router, Link, Route } from 'react-router-dom'
+import { Link, Route } from 'react-router-dom'
 
 class Home extends Component {
 
@@ -19,7 +19,13 @@ class Home extends Component {
             fetch("https://hacker-news.firebaseio.com/v0/item/" + id + ".json")
               .then((result) => result.json(result))
               .then((result) => { 
-                this.setState({ titles: [...this.state.titles, { id: result.id, title: result.title } ] })
+                this.setState({ titles: [...this.state.titles, { 
+                  id: result.id, 
+                  title: result.title,
+                  url: result.url,
+                  score: result.score,
+                  user: result.by,
+                }]})
               })
           ))
         )
@@ -30,7 +36,11 @@ class Home extends Component {
     const { titles } = this.state
     return ( <ol>
         {Object.values(titles).slice(0, 30).map(obj => (
-            <li className="list" key={obj.id}>{obj.title}</li>
+            <li className="list" key={obj.id}>
+            
+              <a href={obj.url} className="newsLink"> {obj.title} </a>
+
+            </li>
         ))}
       </ol>
     )
@@ -39,25 +49,13 @@ class Home extends Component {
   render() {
     return (
       <Flexbox className="container"> 
-
-        <Router>
-          <Header />
-        </Router>
-
+        <Header />
         <Flexbox className="contentContainer"> 
-
           <Flexbox className="listContainer">
             {this.renderTitles()}
           </Flexbox>
-          
-          <Router>
-            <Link to='/' className="moreLink"> <h1 className="more"> More </h1> </Link>
-          </Router>
-
-          <Router>
-            <Footer />
-          </Router>
-        
+          <Link to='/' className="moreLink"> <h1 className="more"> More </h1> </Link>
+          <Footer />
         </Flexbox>
       </Flexbox>
     );
