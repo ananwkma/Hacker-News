@@ -79,10 +79,12 @@
   padding: 0;
   background: none;
   cursor: pointer;
+  outline: none;
 }
 
 .more {
   font-size: 15px;
-  color: #999999;
+  font-weight: 500;
+  color: #000000;
 }
 
