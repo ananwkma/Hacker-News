@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Flexbox from 'flexbox-react'
 import '../styles/Header.css'
-import { Link, Route } from 'react-router-dom'
+import { Link, /*Route*/ } from 'react-router-dom'
 
 class Header extends Component {
 	render() {

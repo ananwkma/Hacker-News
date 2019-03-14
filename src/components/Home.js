@@ -3,7 +3,7 @@ import Flexbox from 'flexbox-react'
 import '../styles/App.css'
 import Footer from './Footer'
 import Header from './Header'
-import { Link, Route } from 'react-router-dom'
+import { Link, /*Route*/ } from 'react-router-dom'
 
 class Home extends Component {
 
