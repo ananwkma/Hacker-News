@@ -36,14 +36,19 @@
   margin-left: 3px;
 }
 
-.listContainer {
+.contentContainer {
   background-color: #f2f4ed;
   padding-top: 1px;
   padding-bottom: 1px;
+  flex-direction: column;
+}
+
+.listContainer {
 }
 
 .list {
   margin-bottom: 5px;
+  font-size: 15px;
 }
 
 .orangeBar {
@@ -54,17 +59,79 @@
   display: flex;
 }
 
-.orangeBar > h1{
+.orangeBar > h1 {
   font-size: 15px;
   font-weight: 900;
   margin-left: 5px;
 }
 
-.orangeBar > h2{
+.orangeBar > h2 {
   font-size: 15px;
   font-weight: 400;
   margin-left: 10px;
 }
+
+.orangeBar > h3 {
+  font-size: 15px;
+  font-weight: 400;
+  margin-left: auto;
+  margin-right: 5px;
+}
+
+.more {
+  margin-right: auto;
+  margin-left: 40px;
+  font-size: 15px;
+  color: #999999;
+}
+
+.footer {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer > hr {
+  background-color: #FF6600;
+  border: 0;
+  height: 2px;
+  width: 100%;
+}
+
+.footer > h1 {
+  font-size: 15px;
+  color: #999999;
+}
+
+.footer > h2 {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.linksContainer {
+
+}
+
+.linksContainer > h3 {
+  font-size: 10px;
+  font-weight: 500;
+  margin-right: 3px;
+  margin-left: 3px;
+}
+
+.searchBarContainer {
+  align-items: center;
+}
+
+.searchBarContainer > h1 {
+  font-size: 15px;
+  color: #999999;
+}
+
+.searchBarContainer > form {
+  margin-left: 10px;
+}
+
 
 @keyframes App-logo-spin {
   from {

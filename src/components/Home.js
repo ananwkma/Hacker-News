@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import Flexbox from 'flexbox-react'
 import '../App.css'
+import Footer from './Footer'
+import Header from './Header'
 
-class Titles extends Component {
+class Home extends Component {
 
   state = {
     titles: [],
@@ -26,7 +28,7 @@ class Titles extends Component {
   renderTitles = () => {
     const { titles } = this.state
     return ( <ol>
-        {Object.values(titles).map(obj => (
+        {Object.values(titles).slice(0, 30).map(obj => (
             <li className="list" key={obj.id}>{obj.title}</li>
         ))}
       </ol>
@@ -36,19 +38,17 @@ class Titles extends Component {
   render() {
     return (
       <Flexbox className="container"> 
-        <Flexbox className="orangeBar">
-          <img className="logo" src="../../images/logo.png" alt="logo"/>
-          <h1> HackerNews </h1> 
-          <h2> new </h2>
-          <h2> past </h2>
-          <h2> comments </h2>
-          <h2> ask </h2>
-          <h2> show </h2>
-          <h2> jobs </h2>
-          <h2> submit </h2>
-        </Flexbox>
-        <Flexbox className="listContainer">
-          {this.renderTitles()}
+        <Header />
+
+        <Flexbox className="contentContainer"> 
+
+          <Flexbox className="listContainer">
+            {this.renderTitles()}
+          </Flexbox>
+
+          <h1 className="more"> More </h1>
+          <Footer />
+
         </Flexbox>
       </Flexbox>
     );
@@ -57,4 +57,4 @@ class Titles extends Component {
 
 
 
-export default Titles;
+export default Home;
