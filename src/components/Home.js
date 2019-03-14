@@ -9,9 +9,13 @@ class Home extends Component {
 
   state = {
     titles: [],
+    now: 0,
   }
 
   componentDidMount = () => {
+    let now = parseInt((Date.now() + '').substring(0,10))
+    this.setState({now: now})
+
     fetch("https://hacker-news.firebaseio.com/v0/topstories.json") 
       .then((result) => result.json(result))
       .then((idArray) => (
@@ -20,9 +24,10 @@ class Home extends Component {
               .then((result) => result.json(result))
               .then((result) => {
                 let hostname = ''
-                if(result.url) {
+                if (result.url) {
                   hostname = (new URL(result.url)).hostname.split('www.').join('');
                 }
+                //let timestamp = parseInt((result.time + '').substring(0,10))
                 this.setState({ titles: [...this.state.titles, { 
                   id: result.id, 
                   title: result.title,
@@ -40,8 +45,7 @@ class Home extends Component {
   }
 
   renderTitles = () => {
-    const { titles } = this.state
-    const now = Date.now()
+    const { titles, now } = this.state
 
     return ( <ol className="list">
         {Object.values(titles).slice(0, 30).map(obj => (
@@ -49,7 +53,7 @@ class Home extends Component {
             
               <a href={obj.url} className="newsLink"> {obj.title} </a> 
               <Link to='/' className="hostnameLink"> {obj.trunc ? '('+obj.trunc+')' : null} </Link>
-              <h1 className="details"> {obj.score} points by {obj.user} {obj.time} hours ago | hide | {obj.comments} comments </h1>
+              <h1 className="details"> {obj.score} points by {obj.user} {Math.floor((now - obj.time)/3600)} hours ago | hide | {obj.comments} comments </h1>
 
             </li>
         ))}
