@@ -9,6 +9,8 @@ class Home extends Component {
 
   state = {
     titles: [],
+    first: 0,
+    last: 30,
     now: 0,
   }
 
@@ -27,7 +29,6 @@ class Home extends Component {
                 if (result.url) {
                   hostname = (new URL(result.url)).hostname.split('www.').join('');
                 }
-                //let timestamp = parseInt((result.time + '').substring(0,10))
                 this.setState({ titles: [...this.state.titles, { 
                   id: result.id, 
                   title: result.title,
@@ -44,11 +45,11 @@ class Home extends Component {
     )
   }
 
-  renderTitles = () => {
+  renderTitles = (first, last) => {
     const { titles, now } = this.state
 
-    return ( <ol className="list">
-        {Object.values(titles).slice(0, 30).map(obj => (
+    return ( <ol start={this.state.first+1} className="list">
+        {Object.values(titles).slice(first, last).map(obj => (
             <li className="listItem" key={obj.id}>
             
               <a href={obj.url} className="newsLink"> {obj.title} </a> 
@@ -61,15 +62,20 @@ class Home extends Component {
     )
   }
 
+  showMore = () => {
+    this.setState({ first: this.state.first + 30 })
+    this.setState({ last: this.state.last + 30 })
+  }
+
   render() {
     return (
       <Flexbox className="container"> 
         <Header />
         <Flexbox className="contentContainer"> 
           <Flexbox className="listContainer">
-            {this.renderTitles()}
+            {this.renderTitles(this.state.first, this.state.last)}
           </Flexbox>
-          <Link to='/' className="moreLink"> <h1 className="more"> More </h1> </Link>
+          <button onClick={this.showMore} className="moreButton"> <h1 className="more"> More </h1> </button>
           <Footer />
         </Flexbox>
       </Flexbox>
