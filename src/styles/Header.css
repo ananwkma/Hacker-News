@@ -1,0 +1,61 @@
+.homeLink {
+  text-decoration: none;
+}
+
+.homeLink > h1 {
+  text-decoration: none;
+  color: #000000;
+  font-size: 15px;
+  font-weight: 900;
+  margin-left: 5px;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.link > h2 {
+  color: #000000;
+  font-size: 15px;
+  font-weight: 400;
+  margin-left: 10px;
+}
+
+.login {
+  text-decoration: none;
+  margin-left: auto;
+  margin-right: 5px;
+}
+
+.login > h2 {
+  color: #000000;
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.logo {
+  height: 22px;
+  width: 22px;
+  margin-left: 3px;
+  margin-top: 1px;
+}
+
+.orangeBar {
+  background-color: #FF6600;
+  height: 25px;
+  align-items: center;
+  flex-direction: row;
+  display: flex;
+}
+.orangeBar > h2 {
+  font-size: 15px;
+  font-weight: 400;
+  margin-left: 10px;
+}
+
+.orangeBar > h3 {
+  font-size: 15px;
+  font-weight: 400;
+  margin-left: auto;
+  margin-right: 5px;
+}

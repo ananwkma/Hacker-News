@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import Flexbox from 'flexbox-react'
-import '../App.css'
+import '../styles/App.css'
 import Footer from './Footer'
 import Header from './Header'
+import { BrowserRouter as Router, Link, Route } from 'react-router-dom'
 
 class Home extends Component {
 
@@ -38,17 +39,25 @@ class Home extends Component {
   render() {
     return (
       <Flexbox className="container"> 
-        <Header />
+
+        <Router>
+          <Header />
+        </Router>
 
         <Flexbox className="contentContainer"> 
 
           <Flexbox className="listContainer">
             {this.renderTitles()}
           </Flexbox>
+          
+          <Router>
+            <Link to='/' className="moreLink"> <h1 className="more"> More </h1> </Link>
+          </Router>
 
-          <h1 className="more"> More </h1>
-          <Footer />
-
+          <Router>
+            <Footer />
+          </Router>
+        
         </Flexbox>
       </Flexbox>
     );
