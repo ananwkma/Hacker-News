@@ -37,6 +37,10 @@
   flex-direction: column;
 }
 
+.homeContainer {
+  flex-direction: column;
+}
+
 .listContainer {
 
 }
@@ -88,3 +92,7 @@
   color: #000000;
 }
 
+html {
+    visibility: visible;
+    opacity: 1;
+}
