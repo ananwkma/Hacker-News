@@ -1,7 +1,7 @@
 export const RECEIVE_DATA = 'RECEIVE_DATA'
 
 export function handleInitialData() {
-  let counter = -1
+  let counter = 0
   return (dispatch) => {
     fetch("https://hacker-news.firebaseio.com/v0/topstories.json") 
       .then((result) => result.json(result))

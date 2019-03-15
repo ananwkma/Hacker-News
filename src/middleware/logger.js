@@ -4,6 +4,7 @@ const logger = (store) => (next) => (action) => {
     const result = next(action)
     console.log("The new state is: ", store.getState())
   console.groupEnd()
+  return result
 }
 
 export default logger;
