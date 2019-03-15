@@ -1,6 +1,7 @@
 export const RECEIVE_DATA = 'RECEIVE_DATA'
 
 export function handleInitialData() {
+  let counter = -1
   return (dispatch) => {
     fetch("https://hacker-news.firebaseio.com/v0/topstories.json") 
       .then((result) => result.json(result))
@@ -14,7 +15,7 @@ export function handleInitialData() {
                   hostname = (new URL(result.url)).hostname.split('www.').join('');
                 }
                 dispatch(receiveDataAction(
-                  result.id, 
+                  counter++, 
                   result.title, 
                   result.url, 
                   result.score, 

@@ -15,21 +15,23 @@ class Home extends Component {
 
   componentDidMount = () => {
     let now = parseInt((Date.now() + '').substring(0,10))
-    this.setState({now: now})
+    this.setState({ now: now })
+    let titles = Object.values(this.props.headlines).slice(this.state.first, this.state.last)
+    this.setState({ titles: titles })
   }
 
-  renderTitles = (first, last) => {
+  renderTitles = () => {
+    const { now, titles, first, last } = this.state
+    const { headlines } = this.props
+    const vals = Object.values(headlines).slice(first, last)
 
-    const { now } = this.state
+    return ( <ol start={first+1} className="list">
+        {vals.map(obj => (
 
-    return ( <ol start={this.state.first+1} className="list">
-        {Object.values(this.props.headlines).slice(first, last).map(obj => (
             <li className="listItem" key={obj.id}>
-            
               <a href={obj.url} className="newsLink"> {obj.title} </a> 
               <Link to='/' className="hostnameLink"> {obj.trunc ? '('+obj.trunc+')' : null} </Link>
               <h1 className="details"> {obj.score} points by {obj.user} {Math.floor((now - obj.time)/3600)} hours ago | hide | {obj.comments} comments </h1>
-
             </li>
         ))}
       </ol>
@@ -42,12 +44,10 @@ class Home extends Component {
   }
 
   render() {
-    // const { loading } = this.props
-    // if (loading) return <h3> Loading... </h3>
     return (
       <Flexbox className="homeContainer"> 
           <Flexbox className="listContainer">
-            {this.renderTitles(this.state.first, this.state.last)}
+            {this.renderTitles()}
           </Flexbox>
           <button onClick={this.showMore} className="moreButton"> <h1 className="more"> More </h1> </button>
       </Flexbox>
