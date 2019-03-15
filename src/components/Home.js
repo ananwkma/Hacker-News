@@ -7,7 +7,6 @@ import { connect } from 'react-redux'
 class Home extends Component {
 
   state = {
-    titles: [],
     first: 0,
     last: 30,
     now: 0,
@@ -16,12 +15,10 @@ class Home extends Component {
   componentDidMount = () => {
     let now = parseInt((Date.now() + '').substring(0,10))
     this.setState({ now: now })
-    let titles = Object.values(this.props.headlines).slice(this.state.first, this.state.last)
-    this.setState({ titles: titles })
   }
 
   renderTitles = () => {
-    const { now, titles, first, last } = this.state
+    const { now, first, last } = this.state
     const { headlines } = this.props
     const vals = Object.values(headlines).slice(first, last)
 
