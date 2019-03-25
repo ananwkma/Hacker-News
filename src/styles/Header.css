@@ -43,7 +43,6 @@
 .orangeBar {
   background-color: #FF6600;
   height: 25px;
-  align-items: center;
   flex-direction: row;
   display: flex;
 }
